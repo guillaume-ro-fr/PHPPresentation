@@ -111,6 +111,13 @@ abstract class AbstractShape implements ComparableInterface
     private $hashIndex;
 
     /**
+     * Name
+     *
+     * @var string
+     */
+    private $name;
+
+    /**
      * Create a new self
      */
     public function __construct()
@@ -125,6 +132,7 @@ abstract class AbstractShape implements ComparableInterface
         $this->fill = new Style\Fill();
         $this->border = new Style\Border();
         $this->shadow = new Style\Shadow();
+        $this->name = '';
 
         $this->border->setLineStyle(Style\Border::LINE_NONE);
     }
@@ -464,6 +472,26 @@ abstract class AbstractShape implements ComparableInterface
     public function setPlaceHolder(Placeholder $placeholder)
     {
         $this->placeholder = $placeholder;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return AbstractShape
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
         return $this;
     }
 }

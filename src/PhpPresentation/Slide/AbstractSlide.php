@@ -387,4 +387,22 @@ abstract class AbstractSlide implements ComparableInterface, ShapeContainerInter
     {
         $this->relsIndex = $indexName;
     }
+
+    /**
+     * Get shape by name
+     *
+     * @param string $name Name of the shape
+     *
+     * @return \PhpOffice\PhpPresentation\AbstractShape|null
+     */
+    public function getShapeByName($name)
+    {
+        foreach ($this->shapeCollection as $abstractShape) {
+            if ($name === $abstractShape->getName()) {
+                return $abstractShape;
+            }
+        }
+
+        return null;
+    }
 }
